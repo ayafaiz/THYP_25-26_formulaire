@@ -1,4 +1,4 @@
-# THYP_25-26_formulaire
+# THYP_25-26_formulaireProjet
 
 Formulaire Google Forms pour décrire un projet de technologie hypermédias.
 
