@@ -1,15 +1,39 @@
 # THYP_25-26_formulaireProjet
 
-Formulaire Google Forms pour décrire un projet de technologie hypermédias.
 
-## 📌 Liens
+
+##  Liens
 
 - Formulaire :[Lien Google Form](https://forms.gle/xn75ezMgWPH2jMib9)
 - Résultats : [Lien Google Sheets](https://docs.google.com/spreadsheets/d/1Di4YCJD0QKOvJcUXt5vJ0h-b-fSLpPmtMLRiTljvb6E/edit?usp=sharing)
+Lien du diagramme "entité relation" avec mermaid : https://mermaid.live/edit#pako:eNq9Vdtu4jAQ_ZXIUt_aqoRyad5YoNqoC7QQXlZIkZsMqaXEzvpSbZfyPbv9Dn5snZSkgJ2V-rJ5iGLPHHzm-MywQRGLAXkI-IjghONsRVfU0c84WI78wTRwNu_r4iFUOiQOQaqYYP19f_cRE5ITmjiUZcZezsG2DRkmqbGbMRnGEOZYCPgIxlhC-QopJkJgGoGBxDGHI1BFiTwDVsb2mqQEOIQcIpZlmMawh24rCfzpYjj37wN_NrWoQKiIOMklYfRIiA-qBxnG6UJiqaRZA6UAoSooc0EkJhya5b-9M2L7oupQXcut_80fz8eWOiqI_TKrsBGLobk4fQ85owI_pqeSDkYTf-ovgvkgGC_nFjY4zgj9j8aqGDOD6mg2XE7G1gaIWaQysDeAfMmhTjCiiqfNwXdPhM84Jdo_R8I2XX3Ndj4eziaTwXQ0aLBrbXNsOPaQeabHQXqgzzplWDoiYhYLCJUkID5JdBFohovAf1jazFhIYONW9sVxNn08bDBhBCsKwiwUtAr1BKmZDb8Ogi8z231HT3ZWP9Rp-XUDFP6HT8hydubMIcUHpdQD-PX14oJtjqaR56yQYNpFcoXs2bV7i1S5e0t3b8VIgab8E_8UKA6734w0nlDJVaTq8oDjhEgHP0NUIaqZ01BAxKgkRR8g62zYow79UqCS3Rvd_eHwb9TpWWVPaQw6RwknMfIkV3COMuB6VuglKi9dK_UEmU4rIDGssUpLdlsNyzH9zlhWITlTyRPy1jgVeqXyYuDv_0HrXT2dYuBDpqhEXrvfLn8EeRv0E3kXrZurS7fb73VbrnvV63Z19AV5nfblzc1Vv93tt1rXbrvX2Z6jX-Wxrct277rXcfvuddftuf3O9i_fbF5K
 
-## 🎯 Objectif
-Ce dépôt contient le lien vers un Google Form qui collecte les informations nécessaires pour définir un projet de technologie hypermédias (THYP 2025-2026).
+Titre du projet :
+Plateforme intelligente de gestion des inscriptions universitaires basée sur l’intelligence artificielle
 
-## 🛠️ Notes
-- Les réponses sont automatiquement stockées dans Google Sheets.
-- Les données peuvent être exportées en CSV pour analyse.
+Description du projet :
+Ce projet a pour objectif de concevoir et développer une plateforme web intelligente dédiée à la gestion des inscriptions universitaires.
+Elle permet aux étudiants de s’inscrire en ligne, de déposer leurs documents et de suivre l’état d’avancement de leur dossier.
+Grâce à l’intégration de techniques d’intelligence artificielle, la plateforme vise à rendre le processus d’inscription plus rapide, plus fiable et plus personnalisé.
+
+Cette application s’adresse à deux types d’utilisateurs :
+	•	Les étudiants, qui peuvent créer un compte, remplir leurs informations, soumettre leurs documents et obtenir des recommandations de filières adaptées à leur profil.
+	•	L’administration universitaire, qui peut gérer, valider et analyser les inscriptions à travers un tableau de bord intelligent.
+
+Objectif général :
+Développer une application web intelligente permettant d’automatiser, d’optimiser et de personnaliser le processus d’inscription universitaire à l’aide de l’intelligence artificielle.
+
+Objectifs spécifiques :
+	•	Digitaliser le processus d’inscription pour faciliter les démarches étudiantes.
+	•	Automatiser la vérification des documents à l’aide d’un module OCR (reconnaissance de texte).
+	•	Proposer aux étudiants des filières recommandées selon leur profil académique grâce à un système de recommandation basé sur l’IA.
+	•	Fournir à l’administration un tableau de bord complet pour le suivi, la validation et l’analyse des inscriptions.
+	•	Intégrer un chatbot intelligent capable de répondre automatiquement aux questions les plus fréquentes.
+	•	Utiliser des modèles prédictifs pour analyser les tendances et anticiper le nombre d’inscriptions futures.
+
+Technologies utilisées :
+	•	Frontend : React, HTML, CSS, JavaScript
+	•	Backend : php
+	•	Base de données : MySQL 
+	•	Intelligence artificielle : Python, scikit-learn, OCR (Tesseract), NLP pour le chatbot
+	•	Outils : GitHub, Mermaid, VS Code
