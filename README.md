@@ -43,6 +43,7 @@ Technologies utilisées :
 
    ```mermaid
 erDiagram
+
     ETUDIANT {
         int id_etudiant PK
         string nom
@@ -119,13 +120,14 @@ erDiagram
         int id_etudiant FK
     }
 
-    ETUDIANT ||---o{ INSCRIPTION : "soumet"
-    ETUDIANT ||---o{ DOCUMENT : "téléverse"
-    ETUDIANT ||---o{ RECOMMANDATION : "reçoit"
-    ETUDIANT ||---o{ CHATBOT : "interagit avec"
-    ETUDIANT ||---o{ HISTORIQUE_CONNEXION : "se connecte"
-    FILIERE ||---o{ INSCRIPTION : "contient"
-    ADMINISTRATEUR ||---o{ STATISTIQUE : "génère"
-    ADMINISTRATEUR ||---o{ INSCRIPTION : "valide"
+    ETUDIANT ||--o{ INSCRIPTION : "soumet"
+    ETUDIANT ||--o{ DOCUMENT : "téléverse"
+    ETUDIANT ||--o{ RECOMMANDATION : "reçoit"
+    ETUDIANT ||--o{ CHATBOT : "interagit avec"
+    ETUDIANT ||--o{ HISTORIQUE_CONNEXION : "se connecte"
+    FILIERE ||--o{ INSCRIPTION : "contient"
+    ADMINISTRATEUR ||--o{ STATISTIQUE : "génère"
+    ADMINISTRATEUR ||--o{ INSCRIPTION : "valide"
+
 ```
 
