@@ -37,3 +37,96 @@ Technologies utilisées :
 	•	Base de données : MySQL 
 	•	Intelligence artificielle : Python, scikit-learn, OCR (Tesseract), NLP pour le chatbot
 	•	Outils : GitHub, Mermaid, VS Code
+
+
+
+
+```mermaid
+	erDiagram
+
+    ETUDIANT {
+        int id_etudiant PK
+        string nom
+        string prenom
+        string email
+        string mot_de_passe
+        date date_naissance
+        string adresse
+        string niveau
+        string filiere_recommandee
+    }
+
+    INSCRIPTION {
+        int id_inscription PK
+        date date_inscription
+        string statut
+        string annee_universitaire
+        int id_etudiant FK
+        int id_filiere FK
+    }
+
+    FILIERE {
+        int id_filiere PK
+        string nom_filiere
+        string description
+        string responsable
+    }
+
+    ADMINISTRATEUR {
+        int id_admin PK
+        string nom
+        string prenom
+        string email
+        string mot_de_passe
+        string role
+    }
+
+    DOCUMENT {
+        int id_document PK
+        string type_document
+        string url_document
+        string statut_validation
+        int id_etudiant FK
+    }
+
+    RECOMMANDATION {
+        int id_recommandation PK
+        string type_modele
+        float score
+        string suggestion
+        int id_etudiant FK
+    }
+
+    STATISTIQUE {
+        int id_stat PK
+        string annee
+        int nb_inscriptions
+        int nb_etudiants
+        string tendance
+    }
+
+    CHATBOT {
+        int id_chat PK
+        string question
+        string reponse
+        int id_etudiant FK
+    }
+
+    HISTORIQUE_CONNEXION {
+        int id_connexion PK
+        datetime date_connexion
+        string adresse_ip
+        string navigateur
+        int id_etudiant FK
+    }
+
+    ETUDIANT ||---o{ INSCRIPTION : "soumet"
+    ETUDIANT ||---o{ DOCUMENT : "téléverse"
+    ETUDIANT ||---o{ RECOMMANDATION : "reçoit"
+    ETUDIANT ||---o{ CHATBOT : "interagit avec"
+    ETUDIANT ||---o{ HISTORIQUE_CONNEXION : "se connecte"
+    FILIERE ||---o{ INSCRIPTION : "contient"
+    ADMINISTRATEUR ||---o{ STATISTIQUE : "génère"
+    ADMINISTRATEUR ||---o{ INSCRIPTION : "valide"
+```
+
