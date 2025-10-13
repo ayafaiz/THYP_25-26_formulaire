@@ -41,9 +41,8 @@ Technologies utilisées :
 
 
 
-```mermaid
-	erDiagram
-
+   ```mermaid
+erDiagram
     ETUDIANT {
         int id_etudiant PK
         string nom
