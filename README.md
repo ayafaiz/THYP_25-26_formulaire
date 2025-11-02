@@ -78,7 +78,17 @@ erDiagram
         int id_action PK
         datetime date_action
         string type_action
-        int id_utilisateur
+        int id_utilisateur FK
+    }
+
+    UTILISATEUR ||--o{ DOCUMENT : "crée"
+    UTILISATEUR ||--o{ HISTORIQUE_ACTION : "effectue"
+    LIEU ||--o{ EVENEMENT : "accueille"
+    PROJET ||--o{ EVENEMENT : "contient"
+    EVENEMENT ||--o{ DOCUMENT : "associe"
+  ```
+
+       
 
       ```
 
