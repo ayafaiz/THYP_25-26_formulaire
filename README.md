@@ -80,6 +80,5 @@ erDiagram
         string type_action
         int id_utilisateur
 
-
-```
+      ```
 
