@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>API Omeka S – Gestion des Ressources Culturelles</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    section { margin-bottom: 30px; }
+    input, button, textarea, select { margin: 5px 0; width: 100%; max-width: 500px; }
+    label { font-weight: bold; display: block; margin-top: 10px; }
+    .response { margin-top: 20px; white-space: pre-wrap; background: #f4f4f4; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>API Omeka S – Gestion des Ressources Culturelles</h1>
+
+  <!-- Lecture d'une ressource -->
+  <section>
+    <h2>1. Lecture d'une ressource</h2>
+    <label for="readType">Type de ressource :</label>
+    <select id="readType">
+      <option value="items">Document</option>
+      <option value="events">Événement</option>
+      <option value="places">Lieu</option>
+      <option value="users">Utilisateur</option>
+      <option value="projects">Projet</option>
+    </select>
+    <label for="readId">ID de la ressource :</label>
+    <input type="number" id="readId" placeholder="Ex : 5">
+    <button id="btnRead">Lire la ressource</button>
+  </section>
+
+  <!-- Création d'une ressource -->
+  <section>
+    <h2>2. Création d'une ressource</h2>
+    <label for="createType">Type de ressource :</label>
+    <select id="createType">
+      <option value="items">Document</option>
+      <option value="events">Événement</option>
+      <option value="places">Lieu</option>
+      <option value="users">Utilisateur</option>
+      <option value="projects">Projet</option>
+    </select>
+
+    <div id="fieldsContainer">
+      <!-- Champs spécifiques seront injectés ici -->
+    </div>
+
+    <button id="btnCreate">Créer la ressource</button>
+  </section>
+
+  <div class="response" id="apiResponse">Réponse de l’API …</div>
+
+<script>
+const apiBase = 'http://localhost/omekas/api'; // Remplace par ton URL Omeka S
+
+// Champs pour chaque type de ressource
+const resourceFields = {
+  items: [
+    { label: "Titre du document", id: "doc_title", type: "text" },
+    { label: "Type de document", id: "doc_type", type: "text" },
+    { label: "URL du document", id: "doc_url", type: "text" },
+    { label: "Statut de validation", id: "doc_status", type: "text" }
+  ],
+  events: [
+    { label: "Nom de l'événement", id: "event_name", type: "text" },
+    { label: "Date", id: "event_date", type: "date" },
+    { label: "Lieu", id: "event_place", type: "text" },
+    { label: "Description", id: "event_desc", type: "text" }
+  ],
+  places: [
+    { label: "Nom du lieu", id: "place_name", type: "text" },
+    { label: "Adresse", id: "place_address", type: "text" },
+    { label: "Description", id: "place_desc", type: "text" }
+  ],
+  users: [
+    { label: "Nom", id: "user_name", type: "text" },
+    { label: "Prénom", id: "user_firstname", type: "text" },
+    { label: "Email", id: "user_email", type: "text" },
+    { label: "Mot de passe", id: "user_password", type: "password" }
+  ],
+  projects: [
+    { label: "Nom du projet", id: "proj_name", type: "text" },
+    { label: "Description", id: "proj_desc", type: "text" },
+    { label: "Responsable", id: "proj_responsible", type: "text" }
+  ]
+};
+
+// Fonction pour créer les champs dynamiquement
+const fieldsContainer = document.getElementById('fieldsContainer');
+const createTypeSelect = document.getElementById('createType');
+
+function renderFields(type) {
+  fieldsContainer.innerHTML = "";
+  resourceFields[type].forEach(f => {
+    const label = document.createElement("label");
+    label.textContent = f.label;
+    const input = document.createElement("input");
+    input.type = f.type;
+    input.id = f.id;
+    fieldsContainer.appendChild(label);
+    fieldsContainer.appendChild(input);
+  });
+}
+
+createTypeSelect.addEventListener("change", () => renderFields(createTypeSelect.value));
+renderFields(createTypeSelect.value);
+
+// Lecture d'une ressource
+document.getElementById('btnRead').addEventListener('click', async () => {
+  const type = document.getElementById('readType').value;
+  const id = document.getElementById('readId').value;
+  try {
+    const resp = await fetch(`${apiBase}/${type}/${id}`);
+    if (!resp.ok) throw new Error('Erreur HTTP ' + resp.status);
+    const data = await resp.json();
+    document.getElementById('apiResponse').textContent = JSON.stringify(data, null, 2);
+  } catch(err) {
+    document.getElementById('apiResponse').textContent = 'Erreur : ' + err;
+  }
+});
+
+// Création d'une ressource
+document.getElementById('btnCreate').addEventListener('click', async () => {
+  const type = createTypeSelect.value;
+  const body = {};
+  resourceFields[type].forEach(f => {
+    const value = document.getElementById(f.id).value;
+    if(value) body[f.id] = value;
+  });
+
+  try {
+    const resp = await fetch(`${apiBase}/${type}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Authorization': 'Bearer VOTRE_TOKEN' si nécessaire
+      },
+      body: JSON.stringify(body)
+    });
+    if (!resp.ok) throw new Error('Erreur HTTP ' + resp.status);
+    const data = await resp.json();
+    document.getElementById('apiResponse').textContent = JSON.stringify(data, null, 2);
+  } catch(err) {
+    document.getElementById('apiResponse').textContent = 'Erreur : ' + err;
+  }
+});
+</script>
+</body>
+</html>
