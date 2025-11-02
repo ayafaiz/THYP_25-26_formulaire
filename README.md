@@ -6,72 +6,34 @@
 
 - Formulaire :[Lien Google Form](https://forms.gle/xn75ezMgWPH2jMib9)
 
-Titre du projet :
-Plateforme intelligente de gestion des inscriptions universitaires basée sur l’intelligence artificielle
+
+Titre du projet : Plateforme de gestion des ressources culturelles
 
 Description du projet :
-Ce projet a pour objectif de concevoir et développer une plateforme web intelligente dédiée à la gestion des inscriptions universitaires.
-Elle permet aux étudiants de s’inscrire en ligne, de déposer leurs documents et de suivre l’état d’avancement de leur dossier.
-Grâce à l’intégration de techniques d’intelligence artificielle, la plateforme vise à rendre le processus d’inscription plus rapide, plus fiable et plus personnalisé.
-
-Cette application s’adresse à deux types d’utilisateurs :
-	•	Les étudiants, qui peuvent créer un compte, remplir leurs informations, soumettre leurs documents et obtenir des recommandations de filières adaptées à leur profil.
-	•	L’administration universitaire, qui peut gérer, valider et analyser les inscriptions à travers un tableau de bord intelligent.
-
+Ce projet a pour objectif de concevoir et développer une plateforme web dédiée à la gestion et à la valorisation des ressources culturelles. Elle permet de centraliser et d’organiser différents types de ressources, telles que les événements, lieux, projets, documents et utilisateurs, tout en offrant une navigation claire et des liens entre ces éléments.
+Cette application s'adresse à deux types d'utilisateurs :
+Les professionnels et chercheurs en culture et patrimoine, qui peuvent créer, modifier et consulter des ressources, gérer des projets et documenter des événements.
+Le grand public intéressé par le patrimoine culturel, qui peut explorer les ressources disponibles et découvrir les événements et projets culturels.
 Objectif général :
-Développer une application web intelligente permettant d’automatiser, d’optimiser et de personnaliser le processus d’inscription universitaire à l’aide de l’intelligence artificielle.
-
+Développer une plateforme web permettant d’organiser, structurer et valoriser les ressources culturelles tout en facilitant leur consultation et leur interconnexion.
 Objectifs spécifiques :
-	•	Digitaliser le processus d’inscription pour faciliter les démarches étudiantes.
-	•	Automatiser la vérification des documents à l’aide d’un module OCR (reconnaissance de texte).
-	•	Proposer aux étudiants des filières recommandées selon leur profil académique grâce à un système de recommandation basé sur l’IA.
-	•	Fournir à l’administration un tableau de bord complet pour le suivi, la validation et l’analyse des inscriptions.
-	•	Intégrer un chatbot intelligent capable de répondre automatiquement aux questions les plus fréquentes.
-	•	Utiliser des modèles prédictifs pour analyser les tendances et anticiper le nombre d’inscriptions futures.
-
+Centraliser et structurer les informations culturelles (Événements, Lieux, Projets, Documents, Utilisateurs).
+Créer des vocabulaire et modèles de ressources pour normaliser les données.
+Permettre l’importation de données via des fichiers CSV et leur gestion dans Omeka S.
+Offrir une interface intuitive pour la consultation et la gestion des ressources.
+Valoriser les relations entre les ressources pour mieux comprendre les liens entre événements, lieux et projets.
 Technologies utilisées :
-	•	Frontend : React, HTML, CSS, JavaScript
-	•	Backend : php
-	•	Base de données : MySQL 
-	•	Intelligence artificielle : Python, scikit-learn, OCR (Tesseract), NLP pour le chatbot
-	•	Outils : GitHub, Mermaid, VS Code
-
+Frontend : HTML, CSS, JavaScript
+Backend : PHP
+Base de données : MySQL
+Outils : Omeka S, GitHub, VS Code
 
 
 
    ```mermaid
 erDiagram
-
-    ETUDIANT {
-        int id_etudiant PK
-        string nom
-        string prenom
-        string email
-        string mot_de_passe
-        date date_naissance
-        string adresse
-        string niveau
-        string filiere_recommandee
-    }
-
-    INSCRIPTION {
-        int id_inscription PK
-        date date_inscription
-        string statut
-        string annee_universitaire
-        int id_etudiant FK
-        int id_filiere FK
-    }
-
-    FILIERE {
-        int id_filiere PK
-        string nom_filiere
-        string description
-        string responsable
-    }
-
-    ADMINISTRATEUR {
-        int id_admin PK
+    UTILISATEUR {
+        int id_utilisateur PK
         string nom
         string prenom
         string email
@@ -81,51 +43,43 @@ erDiagram
 
     DOCUMENT {
         int id_document PK
+        string titre
         string type_document
         string url_document
         string statut_validation
-        int id_etudiant FK
+        int id_utilisateur FK
     }
 
-    RECOMMANDATION {
-        int id_recommandation PK
-        string type_modele
-        float score
-        string suggestion
-        int id_etudiant FK
+    LIEU {
+        int id_lieu PK
+        string nom
+        string adresse
+        string description
     }
 
-    STATISTIQUE {
-        int id_stat PK
-        string annee
-        int nb_inscriptions
-        int nb_etudiants
-        string tendance
+    EVENEMENT {
+        int id_evenement PK
+        string nom
+        date date_debut
+        date date_fin
+        string description
+        int id_lieu FK
+        int id_projet FK
     }
 
-    CHATBOT {
-        int id_chat PK
-        string question
-        string reponse
-        int id_etudiant FK
+    PROJET {
+        int id_projet PK
+        string nom
+        string description
+        string responsable
     }
 
-    HISTORIQUE_CONNEXION {
-        int id_connexion PK
-        datetime date_connexion
-        string adresse_ip
-        string navigateur
-        int id_etudiant FK
-    }
+    HISTORIQUE_ACTION {
+        int id_action PK
+        datetime date_action
+        string type_action
+        int id_utilisateur
 
-    ETUDIANT ||--o{ INSCRIPTION : "soumet"
-    ETUDIANT ||--o{ DOCUMENT : "téléverse"
-    ETUDIANT ||--o{ RECOMMANDATION : "reçoit"
-    ETUDIANT ||--o{ CHATBOT : "interagit avec"
-    ETUDIANT ||--o{ HISTORIQUE_CONNEXION : "se connecte"
-    FILIERE ||--o{ INSCRIPTION : "contient"
-    ADMINISTRATEUR ||--o{ STATISTIQUE : "génère"
-    ADMINISTRATEUR ||--o{ INSCRIPTION : "valide"
 
 ```
 
